@@ -28,10 +28,10 @@ void print2DArr(int *arr2D[], int rows, int columns){
 	for(int i = 0; i < rows; i++){
 		for(int j = 0; j < columns; j++){
 			printf("%d", *(arr2D[i]+j));
-			if(j < columns - 1){
+			if(!(j == columns - 1 && i == rows - 1)){
 				printf(" ");
 			}
 		}
-		printf("\n");
 	}
+	printf("\n");
 }
