@@ -35,15 +35,15 @@ int main(){
 bool solveMaze(char** maze, const int HT, const int WD, int x, int y){
     if(x < 0 || x >= WD || y < 0 || y >= HT) return false; // checks the boundaries of the maze
 	if(*(*(maze + y) + x) == '*') return true; // checks if the goal is achieved
-	if(*(*(maze + y) + x) == '#' || *(*(maze + y) + x) == '+') return false; // checks if the point is blocked or visited before
+	if(*(*(maze + y) + x) == '#' || *(*(maze + y) + x) == '.') return false; // checks if the point is blocked or visited before
 
-	*(*(maze + y) + x) = '+'; // marks visited point
+	*(*(maze + y) + x) = '.'; // marks visited point
 
     if(solveMaze(maze, HT, WD, x, y - 1) == true) return true; // checks the north direction
     if(solveMaze(maze, HT, WD, x + 1, y) == true) return true; // checks the east direction
     if(solveMaze(maze, HT, WD, x, y + 1) == true) return true; // checks the south direction
     if(solveMaze(maze, HT, WD, x - 1, y) == true) return true; // checks the west direction
-	*(*(maze + y) + x) = 'x'; // unmarks visited point (it is not correct route)
+	*(*(maze + y) + x) = ' '; // unmarks visited point (it is not correct route)
 	return false;
 }
 
