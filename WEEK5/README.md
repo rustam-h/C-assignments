@@ -1,2 +1,2 @@
-# C-assignments
-This is where I will store C assignments.
+Task 1 requires to resize array (extend or shrink).
+
