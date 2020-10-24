@@ -107,6 +107,7 @@ bool checkBalanced(char str[]){
         }
         else return false;
     }
+    if(!isEmpty(stack)) return false;
     return true;
 }
 
