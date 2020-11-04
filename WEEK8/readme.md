@@ -1,0 +1,1 @@
+In this assignment, we are required to create queue system using linked lists and implement several functions related to linked list such as deletion by the key, insertion to the end and deletion of the first node.
