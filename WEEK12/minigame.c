@@ -4,9 +4,9 @@
 
 #define BUFF_SIZE 256
 
-bool won(char *pattern, int len){
+bool won(char *checked, int len){
     for (int i = 0; i < len; i++){
-        if (pattern[i] != '+')
+        if (checked[i] != '+')
             return  false;
     }
 return true;
@@ -50,7 +50,7 @@ int main(int argc, char **argv){
     char *file = (char*)malloc(BUFF_SIZE * sizeof(char));
     char *password = (char*)malloc(BUFF_SIZE * sizeof(char));
     char *input = (char*)malloc(BUFF_SIZE * sizeof(char));
-    char *pattern = (char*)malloc(BUFF_SIZE * sizeof(char));
+    char *checked = (char*)malloc(BUFF_SIZE * sizeof(char));
     char quit[] = "!quit";
 
     if (argc < 2){
@@ -93,7 +93,7 @@ int main(int argc, char **argv){
     while (num_try > 0){
         printf("\nyou have %d tries left: ", num_try);
         scanf("%s", input);
-        pattern = check(password, len, input);
+        checked = check(password, len, input);
         
 	bool quit_flag = true;
         for (int i = 0; i < 5; i++){
@@ -105,15 +105,14 @@ int main(int argc, char **argv){
         if (quit_flag){
             free(password);
             free(input);
-	    free(pattern);
             exit(5);
         }
         
-        if (pattern == "#"){
+        if (checked == "#"){
             printf("Wrong number of characters, try again");
             continue;
         }
-        bool flag = won(pattern, len);
+        bool flag = won(checked, len);
         if (flag)
             printf("correct, here's how you did:\n"); 
         else
@@ -124,7 +123,7 @@ int main(int argc, char **argv){
         }
         printf("\n");
         for (int j = 0; j < len; j++){
-            printf("%c", pattern[j]);
+            printf("%c", checked[j]);
         }
         num_try--;
         
@@ -132,14 +131,14 @@ int main(int argc, char **argv){
             printf("\nyou win\n");
             free(password);
             free(input);
-            free(pattern);
+            free(checked);
             exit(3);
         }
         else if(num_try == 0){
             printf("\ngame over\n");
             free(password);
             free(input);
-            free(pattern);
+            free(checked);
             exit(4);
         }
         else{
